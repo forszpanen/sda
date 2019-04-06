@@ -10,6 +10,10 @@ public class Calculator {
     }
 
     public BigDecimal doOperation(int a, int b) {
+        if (strategy == null){
+            throw new NullPointerException("Strategy has not been set.");
+        }
         return strategy.performOperation(a, b);
     }
+
 }
