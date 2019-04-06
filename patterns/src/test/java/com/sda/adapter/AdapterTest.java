@@ -14,4 +14,13 @@ public class AdapterTest {
         assertEquals("Adam", newSystemPerson.getFirstName());
         assertEquals("Kowalski", newSystemPerson.getLastName());
     }
+
+    @Test
+    public void shouldAdapt2() {
+        final OldSystemPerson oldSystemPerson = new OldSystemPerson("Adam kowalski");
+        final NewSystemPerson newSystemPerson = oldSystemPerson;
+
+        assertEquals("Adam", newSystemPerson.getFirstName());
+        assertEquals("Kowalski", newSystemPerson.getLastName());
+    }
 }
