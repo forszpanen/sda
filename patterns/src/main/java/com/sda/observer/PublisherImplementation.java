@@ -10,4 +10,9 @@ public class PublisherImplementation implements Publisher {
     public void notifyObservers() {
 
     }
+
+    @Override
+    public void unregister(Observer observer1) {
+
+    }
 }
