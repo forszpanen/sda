@@ -11,6 +11,8 @@ public class CompositeTest {
         final OurComposite window = Mockito.spy(new OurWindow());
         final OurLeaf button = Mockito.spy(new OurButton());
         final OurLeaf text = Mockito.spy(new OurText());
+        window.add(button);
+        window.add(text);
 
         window.draw();
 
