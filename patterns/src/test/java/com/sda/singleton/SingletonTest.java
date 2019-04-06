@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.*;
 
@@ -40,10 +41,9 @@ public class SingletonTest {
         //When
         Constructor<?>[] constructors = Singleton.class.getConstructors();
 
-
         // then
         assertEquals(1, constructors.length);
-        assertFalse(constructors[0].isAccessible());
+        assertTrue(Modifier.isPrivate(constructors[0].getModifiers()));
 
     }
 
