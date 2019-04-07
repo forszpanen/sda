@@ -11,7 +11,8 @@ public class MediatorTest {
         final Telefon telefon = Mockito.mock(Telefon.class);
         final Pracownik kowalski = Mockito.mock(Pracownik.class);
         final Salka salka = Mockito.mock(Salka.class);
-        final PaniKasia paniKasia = new PaniKasia();
+        final PaniKasia paniKasia = new PaniKasia(ksiazkaTelefoniczna, telefon, salka);
+
         Mockito.when(ksiazkaTelefoniczna.getNumer(Mockito.eq("Kowalski"))).thenReturn("12345");
         Mockito.when(telefon.zadzwon(Mockito.eq("12345"))).thenReturn(kowalski);
 
