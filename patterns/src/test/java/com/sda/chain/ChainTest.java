@@ -57,6 +57,6 @@ public class ChainTest {
         bench2.setNext(bench3);
         bench3.setNext(bench4);
 
-        assertTrue(bench1.solve(new Zadanie("4")).isPresent());
+        assertFalse(bench1.solve(new Zadanie("4")).isPresent());
     }
 }
