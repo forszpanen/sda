@@ -16,7 +16,7 @@ public class Worker implements Element {
 
     @Override
     public void accept(Visitor visitor) {
-
+        visitor.visitWorker(this);
     }
 
     public BigDecimal getSalary() {
