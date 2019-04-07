@@ -10,7 +10,14 @@ public abstract class AbstractChainElement {
     }
 
     public Optional<Result> solve(Zadanie zadanie) {
-        return solveImpl(zadanie);
+        Optional<Result> myResult = solveImpl(zadanie);
+        if (myResult.isPresent()) {
+            return myResult;
+        }
+        if (next != null) {
+            return next.solve(zadanie);
+        }
+        return Optional.empty();
     }
 
     protected abstract Optional<Result> solveImpl(Zadanie zadanie);
