@@ -3,6 +3,10 @@ package com.sda.visistor;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.math.BigDecimal;
+
+import static org.junit.Assert.assertEquals;
+
 public class VisitorTest {
 
     @Test
@@ -40,5 +44,22 @@ public class VisitorTest {
         Mockito.verify(visitor).visitCompany(Mockito.eq(company));
         Mockito.verify(visitor).visitWorker(Mockito.eq(worker1));
         Mockito.verify(visitor).visitWorker(Mockito.eq(worker2));
+    }
+
+    @Test
+    public void shouldComputeSalary() {
+        final Company company = new Company();
+        final Worker worker1 = new Worker(BigDecimal.valueOf(120.0));
+        final Worker worker2 = new Worker(BigDecimal.valueOf(100.0));
+        final Worker worker3 = new Worker(BigDecimal.valueOf(110.0));
+        company.add(worker1);
+        company.add(worker2);
+        company.add(worker3);
+
+        final AverageSalaryVisitor visitor = new AverageSalaryVisitor();
+
+        company.accept(visitor);
+
+        assertEquals(BigDecimal.valueOf(110.0), visitor.getAvgSalary());
     }
 }
