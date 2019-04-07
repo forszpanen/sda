@@ -30,4 +30,33 @@ public class ChainTest {
 
         assertFalse(result.isPresent());
     }
+
+    @Test
+    public void shouldAnswerToTaskInCooperation() {
+        final AbstractChainElement bench1 = new Bench();
+        final AbstractChainElement bench2 = new Bench("1");
+        final AbstractChainElement bench3 = new Bench("3");
+        final AbstractChainElement bench4 = new Bench("1", "2", "3", "*");
+        bench1.setNext(bench2);
+        bench2.setNext(bench3);
+        bench3.setNext(bench4);
+
+        assertTrue(bench1.solve(zadanie1).isPresent());
+        assertTrue(bench1.solve(zadanie2).isPresent());
+        assertTrue(bench1.solve(zadanie3).isPresent());
+        assertTrue(bench1.solve(zadanieGw).isPresent());
+    }
+
+    @Test
+    public void shouldNotAnswerToTaskInCooperation() {
+        final AbstractChainElement bench1 = new Bench();
+        final AbstractChainElement bench2 = new Bench("1");
+        final AbstractChainElement bench3 = new Bench("3");
+        final AbstractChainElement bench4 = new Bench("1", "2", "3", "*");
+        bench1.setNext(bench2);
+        bench2.setNext(bench3);
+        bench3.setNext(bench4);
+
+        assertTrue(bench1.solve(new Zadanie("4")).isPresent());
+    }
 }
