@@ -10,7 +10,7 @@ public abstract class AbstractChainElement {
     }
 
     public Optional<Result> solve(Zadanie zadanie) {
-        return Optional.empty();
+        return solveImpl(zadanie);
     }
 
     protected abstract Optional<Result> solveImpl(Zadanie zadanie);

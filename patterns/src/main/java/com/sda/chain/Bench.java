@@ -14,6 +14,9 @@ public class Bench extends AbstractChainElement {
 
     @Override
     protected Optional<Result> solveImpl(Zadanie zadanie) {
+        if (answerPossible.contains(zadanie.getId())) {
+            return Optional.of(new Result());
+        }
         return Optional.empty();
     }
 }
