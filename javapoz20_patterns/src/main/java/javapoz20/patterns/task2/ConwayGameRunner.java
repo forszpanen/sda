@@ -7,7 +7,8 @@ import java.io.InputStreamReader;
 public class ConwayGameRunner {
     public static void main(String[] args) throws IOException {
 
-//        ConwayGame.getInstance().init();
+        ConwayGame.getInstance().init();
+        ConwayGame.getInstance().setTransitionStrategy(new DefaultTransition());
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line = null;
@@ -20,7 +21,8 @@ public class ConwayGameRunner {
                 }
 
                 case "": {
-//                    ConwayGame.getInstance().nextStep();
+                    ConwayGame.getInstance().print();
+                    ConwayGame.getInstance().nextStep();
                 }
             }
         } while (true);
